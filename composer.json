@@ -1,0 +1,16 @@
+{
+    "name": "serdjuk/datagrid-bundle",
+    "authors": [
+        {
+            "name": "andrey",
+            "email": "ase6120@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "Serdjuk\\DatagridBundle\\" : "src/"
+        }
+    }
+    ,
+    "require": {}
+}
