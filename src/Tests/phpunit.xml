@@ -1,0 +1,7 @@
+<phpunit bootstrap="./bootstrap.php">
+    <testsuites>
+        <testsuite name="datagrid">
+            <file>./*Test.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

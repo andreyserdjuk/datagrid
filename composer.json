@@ -8,9 +8,13 @@
     ],
     "autoload": {
         "psr-4": {
-          "Serdjuk\\DatagridBundle\\" : "src/"
+          "Serdjuk\\Datagrid\\" : "src/"
         }
     }
     ,
-    "require": {}
+    "require": {
+        "phpunit/phpunit": "^5.1",
+        "phpunit/dbunit": "^2.0",
+        "symfony/event-dispatcher": "^3.0"
+    }
 }
