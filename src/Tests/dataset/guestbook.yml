@@ -1,16 +1,17 @@
 guestbook:
   -
     id: 1
-    content: "Hello buddy!"
+    float: 3.14
     user: "joe"
+    isMarried: true
+    array: [ 'owl-1', 'dog', 'cat', 777, 1,1 ]
     created: 2010-04-24 17:15:23
+    blank: null
   -
     id: 2
-    content: "I like it!"
-    user: "bugs"
-    created: 2010-04-26 12:14:20
-  -
-    id: 3
-    content: "Am I rabbit?"
-    user: "bunny"
-    created: 2014-04-22 17:05:27
+    float: 55.164
+    user: "Spiderman"
+    isMarried: false
+    array: [ 'electra', 'sands', 5 ]
+    created: 2014-11-11 12:16:58
+    blank: null

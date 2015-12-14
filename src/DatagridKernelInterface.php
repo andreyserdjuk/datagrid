@@ -29,6 +29,11 @@ interface DatagridKernelInterface
      */
     public function getFiters();
 
+    /**
+     * Every filter is symfony form type
+     *
+     * @return mixed
+     */
     public function renderFilters();
 
 //    public function setConfigurationProvider(ConfigurationProviderInterface $conf);
