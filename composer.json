@@ -17,5 +17,9 @@
         "phpunit/dbunit": "^2.0",
         "symfony/event-dispatcher": "^3.0",
         "twig/twig": "^1.23"
+    },
+    "require-dev": {
+        "symfony/dom-crawler": "^3.0",
+        "symfony/css-selector": "^3.0"
     }
 }
