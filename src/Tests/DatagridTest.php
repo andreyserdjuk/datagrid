@@ -11,6 +11,7 @@ namespace Serdjuk\Datagrid\Tests;
 use PHPUnit_Extensions_Database_DB_IDatabaseConnection;
 use Serdjuk\Datagrid\DatagridKernel;
 use Serdjuk\Datagrid\DataProvider\ArrayDataProvider;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Yaml\Yaml;
 
@@ -18,6 +19,13 @@ use Symfony\Component\Yaml\Yaml;
 //PHPUnit_Extensions_Database_DataSet_AbstractDataSet
 class DatagridTest extends \PHPUnit_Framework_TestCase
 {
+    protected $data;
+
+    public function setUp()
+    {
+        $this->data = Yaml::parse(file_get_contents(__DIR__ . '/dataset/guestbook.yml'));
+    }
+
     /**
      * For instance we want to render raw array of with different data types:
      *  - integer
@@ -31,17 +39,25 @@ class DatagridTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrayDataProvider()
     {
-        $data = Yaml::parse(file_get_contents(__DIR__ . '/dataset/guestbook.yml'));
-        $dataProvider = new ArrayDataProvider();
-        $dataProvider->setData($data);
-        $grid = new DatagridKernel($dataProvider);
-
-        $this->assertEquals($data, $grid->getData());
+        $grid = new DatagridKernel($this->makeArrayDataProvider($this->data));
+        $this->assertEquals($this->data, $grid->getData());
     }
 
-    public function testEventDrivenProvider()
+    /**
+     * Test whether array data is rendered correctly
+     */
+    public function testRenderArrayDataProvider()
     {
+        $grid = new DatagridKernel($this->makeArrayDataProvider($this->data));
+        $renderedData = $grid->renderData();
 
+        $crawler = new Crawler();
+        $crawler->addContent($renderedData);
+
+        $tableRows = $crawler->filter('tr')->count();
+
+        // count of root element from dataset should be equal rendered rows
+        $this->assertEquals(count($this->data), $tableRows);
     }
 
 //    public function getDataSet()
@@ -58,4 +74,11 @@ class DatagridTest extends \PHPUnit_Framework_TestCase
 //    {
 //        // TODO: Implement getConnection() method.
 //    }
+
+    protected function makeArrayDataProvider($data)
+    {
+        $dataProvider = new ArrayDataProvider();
+        $dataProvider->setData($data);
+        return $dataProvider;
+    }
 }

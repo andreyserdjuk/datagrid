@@ -1,5 +1,4 @@
-guestbook:
-  -
+row1:
     id: 1
     float: 3.14
     user: "joe"
@@ -7,7 +6,7 @@ guestbook:
     array: [ 'owl-1', 'dog', 'cat', 777, 1,1 ]
     created: 2010-04-24 17:15:23
     blank: null
-  -
+row2:
     id: 2
     float: 55.164
     user: "Spiderman"
