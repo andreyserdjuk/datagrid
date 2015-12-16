@@ -11,6 +11,7 @@ namespace Serdjuk\Datagrid\Tests;
 use PHPUnit_Extensions_Database_DB_IDatabaseConnection;
 use Serdjuk\Datagrid\DatagridKernel;
 use Serdjuk\Datagrid\DataProvider\ArrayDataProvider;
+use Serdjuk\Datagrid\TemplatingAdapters\TwigEngineAdapter;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Yaml\Yaml;
@@ -46,18 +47,21 @@ class DatagridTest extends \PHPUnit_Framework_TestCase
     /**
      * Test whether array data is rendered correctly
      */
-    public function testRenderArrayDataProvider()
+    public function testRenderArrayData()
     {
         $grid = new DatagridKernel($this->makeArrayDataProvider($this->data));
-        $renderedData = $grid->renderData();
+        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../Resources/views');
+        $twig = new \Twig_Environment($loader, ['cache' => __DIR__ . '/../../cache']);
+        $grid->setTemplateEngine(new TwigEngineAdapter($twig));
+        $renderedData = $grid->render();
 
         $crawler = new Crawler();
         $crawler->addContent($renderedData);
 
-        $tableRows = $crawler->filter('tr')->count();
+        $tableRows = $crawler->filter('tr');
 
         // count of root element from dataset should be equal rendered rows
-        $this->assertEquals(count($this->data), $tableRows);
+        $this->assertEquals(count($this->data['rows']), $tableRows->count());
     }
 
 //    public function getDataSet()

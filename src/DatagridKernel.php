@@ -9,9 +9,9 @@ namespace Serdjuk\Datagrid;
 
 class DatagridKernel extends AbstractDatagridKernel
 {
-    public function renderData()
+    public function render()
     {
-        // TODO: Implement renderData() method.
+        return $this->templateEngine->render('grid', $this->getData());
     }
 
     public function getFiters()

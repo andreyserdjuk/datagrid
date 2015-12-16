@@ -13,7 +13,10 @@ abstract class AbstractDatagridKernel implements DatagridKernelInterface
 {
     protected $dataProvider;
 
-    protected $templating;
+    /**
+     * @var TemplateEngineAdapterInterface
+     */
+    protected $templateEngine;
 
 //    protected $configurationProvider;
 
@@ -23,11 +26,11 @@ abstract class AbstractDatagridKernel implements DatagridKernelInterface
     }
 
     /**
-     * @param object $templating should implement Twig_TemplateInterface::render(array $context)
+     * @param TemplateEngineAdapterInterface $templateEngine
      */
-    public function setTemplating($templating)
+    public function setTemplateEngine(TemplateEngineAdapterInterface $templateEngine)
     {
-        $this->templating = $templating;
+        $this->templateEngine = $templateEngine;
     }
 
     public function getData()

@@ -12,7 +12,7 @@ namespace Serdjuk\Datagrid;
  *
  * @internal
  */
-interface CellInterface extends RenderableInterface, DataInputInterface
+interface CellAdapterInterface extends RenderableInterface, DataInputInterface
 {
 
 }

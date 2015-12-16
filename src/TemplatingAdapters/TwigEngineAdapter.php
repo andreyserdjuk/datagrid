@@ -21,7 +21,7 @@ class TwigEngineAdapter implements TemplateEngineAdapterInterface
 
     public function render($template, $data)
     {
-        $this->twigEnvironment->loadTemplate($template);
-        return $this->twigEnvironment->render($template, $data);
+        $templates = $this->twigEnvironment->loadTemplate('blocks.html.twig');
+        return $templates->renderBlock($template, $data);
     }
 }

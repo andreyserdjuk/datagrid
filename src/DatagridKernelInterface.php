@@ -7,7 +7,7 @@
 
 namespace Serdjuk\Datagrid;
 
-interface DatagridKernelInterface
+interface DatagridKernelInterface extends RenderableInterface
 {
     /**
      * For ajax calls
@@ -15,13 +15,6 @@ interface DatagridKernelInterface
      * @return array
      */
     public function getData();
-
-    /**
-     * Render data using template
-     *
-     * @return string
-     */
-    public function renderData();
 
     /**
      * @example ['filters' => [], 'pagination' => [], 'group' => []]

@@ -1,16 +1,19 @@
-row1:
-    id: 1
-    float: 3.14
-    user: "joe"
-    isMarried: true
-    array: [ 'owl-1', 'dog', 'cat', 777, 1,1 ]
-    created: 2010-04-24 17:15:23
-    blank: null
-row2:
-    id: 2
-    float: 55.164
-    user: "Spiderman"
-    isMarried: false
-    array: [ 'electra', 'sands', 5 ]
-    created: 2014-11-11 12:16:58
-    blank: null
+rows:
+    -
+        cells:
+            id: 1
+            float: 3.14
+            user: "joe"
+            isMarried: true
+#            array: [ 'owl-1', 'dog', 'cat', 777, 1,1 ]
+            created: 2010-04-24 17:15:23
+            blank: null
+    -
+        cells:
+            id: 2
+            float: 55.164
+            user: "Spiderman"
+            isMarried: false
+#            array: [ 'electra', 'sands', 5 ]
+            created: 2014-11-11 12:16:58
+            blank: null

@@ -1,0 +1,11 @@
+{% block grid %}
+    <table>
+        {% for row in rows %}
+            <tr >
+                {% for key, val in row.cells %}
+                    <td class="{{ key }}">{{ val | e }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock grid %}
