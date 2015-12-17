@@ -10,5 +10,8 @@ namespace Serdjuk\Datagrid;
 
 interface DataInputInterface
 {
-    public function setData();
+    /**
+     * @param mixed $data
+     */
+    public function setData($data);
 }
