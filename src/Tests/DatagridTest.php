@@ -60,6 +60,18 @@ class DatagridTest extends \PHPUnit_Framework_TestCase
 
         $tableRows = $crawler->filter('tr');
 
+        /**
+         * find the rendered data in attributes and tag content
+         */
+        $tableRows->each(function ($node, $i) {
+            $node->children()->each(function ($td, $tdi) use ($i) {
+                $this->assertEquals(
+                    $this->data['rows'][$i]['cells'][$td->attr('class')],
+                    $td->text()
+                );
+            });
+        });
+
         // count of root element from dataset should be equal rendered rows
         $this->assertEquals(count($this->data['rows']), $tableRows->count());
     }
