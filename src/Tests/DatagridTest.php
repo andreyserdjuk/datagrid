@@ -49,10 +49,11 @@ class DatagridTest extends \PHPUnit_Framework_TestCase
      */
     public function testRenderArrayData()
     {
-        $grid = new DatagridKernel($this->makeArrayDataProvider($this->data));
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../Resources/views');
-        $twig = new \Twig_Environment($loader, ['cache' => __DIR__ . '/../../cache']);
-        $grid->setTemplateEngine(new TwigEngineAdapter($twig));
+        $grid = new DatagridKernel(
+            $this->makeArrayDataProvider($this->data),
+            TwigEngineAdapter::getInstance()
+        );
+
         $renderedData = $grid->render();
 
         $crawler = new Crawler();

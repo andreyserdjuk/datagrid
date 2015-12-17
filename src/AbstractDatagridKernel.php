@@ -20,9 +20,10 @@ abstract class AbstractDatagridKernel implements DatagridKernelInterface
 
 //    protected $configurationProvider;
 
-    public function __construct(DataProviderInterface $dataProvider)
+    public function __construct(DataProviderInterface $dataProvider, TemplateEngineAdapterInterface $templateEngine = null)
     {
         $this->dataProvider = $dataProvider;
+        $this->templateEngine = $templateEngine;
     }
 
     /**
